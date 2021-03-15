@@ -1,0 +1,68 @@
+# This is a basic workflow to help you get started with Actions
+
+name: APIM Prod Contoso Service
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+    paths: 
+    - 'contoso/**'
+    #- '!servless-devops/**/README.md'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Prod-Apims:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    env:
+      resourceGroup: apim-prod-contoso-rg
+      ApimServiceName: apims-prod-contoso
+      repoUrl: https://raw.githubusercontent.com/romerve/rvlabs-apim-devops
+      repoBranch: ${GITHUB_REF##*/}
+      repoApimPath: contoso
+
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+        
+    # Azure login
+    - name: Azure Login
+      uses: Azure/login@v1
+      with:
+        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+        creds: ${{ secrets.RVLABS_APIMS_CONTOSO }}
+
+    # ARM deployment tasks  
+    - name: Deploy APIM Service and APIs
+      working-directory: ./contoso
+      env:
+        LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+        PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
+        deploymentName: --name GH_dev_deployment_apim
+        rg: --resource-group ${{ env.resourceGroup }}
+        apiNamePrefix: apim-contoso
+      run: |
+          az deployment group create ${{env.deploymentName}} ${{env.rg}} --template-file ./${{env.apiNamePrefix}}-master.template.json --parameters ./${{env.apiNamePrefix}}-parameters.json --parameters ApimServiceName=${{ env.ApimServiceName }} LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }}
+
+    - name: Deploy APIs
+      working-directory: ./contoso
+      env:
+        LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+        PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+        deploymentName: --name GH_dev_deployment_api
+        rg: --resource-group ${{ env.resourceGroup }}
+        apiNamePrefix: apim-contoso
+      run: |
+        echo $apiNamePrefix
+        for f in *; do
+          if [[ ! -n "policies" && -d ${f} && ! -L ${f} ]]; then
+            echo "Deploying API: $f"
+            az deployment group create $deploymentName $rg --template-file ./$f/$apiNamePrefix-master.template.json --parameters ./$f/$apiNamePrefix-parameters.json --parameters ApimServiceName=${{ env.ApimServiceName }} LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }}/$f
+          fi
+        done
