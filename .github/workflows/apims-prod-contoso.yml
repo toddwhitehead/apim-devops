@@ -21,7 +21,7 @@ jobs:
     env:
       resourceGroup: apim-prod-contoso-rg
       ApimServiceName: apims-prod-contoso
-      repoUrl: https://raw.githubusercontent.com/romerve/rvlabs-apim-devops
+      repoUrl: https://raw.githubusercontent.com/toddwhitehead/apim-devops
       repoBranch: ${GITHUB_REF##*/}
       repoApimPath: contoso
 

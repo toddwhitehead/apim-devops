@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "value": "towhit-apim-demo-dev"
+    },
+    "LinkedTemplatesBaseUrl": {
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/dev/contoso"
+    },
+    "PolicyXMLBaseUrl": {
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/dev/contoso/policies"
+    },
+    "serviceUrl": {
+      "value": {
+        "towhitapidemo": null
+      }
+    },
+    "NamedValues": {
+      "value": {
+        "Property604f1842b183e011f424e727": "d345824a-5346-4a9b-b9c7-6b3f7388c89e",
+        "towhitapidemokey": "75HZkGGiKxz2IXVpjRbD7Hm7QaKKreUeYarHzgAdPk5dhKUmfY4XGA==",
+        "xma": "-Test,JSON-t1"
+      }
+    },
+    "ApiLoggerId": {
+      "value": {
+        "towhitapidemo": {
+          "applicationinsights": "/subscriptions/e3287f13-75f9-41e4-b32f-3c68f0e8d823/resourceGroups/towhit-apim-demo-dev/providers/Microsoft.ApiManagement/service/towhit-apim-demo-dev/loggers/apim-devops"
+        }
+      }
+    },
+    "LoggerResourceId": {
+      "value": {
+        "apimdevops": "/subscriptions/e3287f13-75f9-41e4-b32f-3c68f0e8d823/resourceGroups/towhit-apim-demo-dev/providers/microsoft.insights/components/apim-devops"
+      }
+    }
+  },
+  "resources": []
+}

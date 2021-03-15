@@ -6,10 +6,10 @@
       "value": "apims-prod-contoso"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/toddwhitehead/rvlabs-apim-devops/master/contoso"
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/main/contoso"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/toddwhitehead/rvlabs-apim-devops/master/contoso/policies"
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/main/contoso/policies"
     },
     "serviceUrl": {
       "value": {
