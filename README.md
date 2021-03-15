@@ -1,8 +1,8 @@
-![DEV APIM Service](https://github.com/romerve/rvlabs-apim-devops/workflows/APIM%20Dev%20Contoso%20Service/badge.svg?branch=dev)
-![DEV APIM APIs](https://github.com/romerve/rvlabs-apim-devops/workflows/APIM%20Dev%20Contoso%20APIs/badge.svg?branch=dev)
+![DEV APIM Service](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Dev%20Contoso%20Service/badge.svg?branch=dev)
+![DEV APIM APIs](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Dev%20Contoso%20APIs/badge.svg?branch=dev)
 
-![PROD APIM Service](https://github.com/romerve/rvlabs-apim-devops/workflows/APIM%20Prod%20Contoso%20Service/badge.svg?branch=master)
-![PROD APIM APIs](https://github.com/romerve/rvlabs-apim-devops/workflows/APIM%20Prod%20Contoso%20APIs/badge.svg?branch=master)
+![PROD APIM Service](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Prod%20Contoso%20Service/badge.svg?branch=main)
+![PROD APIM APIs](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Prod%20Contoso%20APIs/badge.svg?branch=main)
 
 # Adopting a DevOps process in Azure API Management using Azure APIM DevOps Resource Kit
 
@@ -41,8 +41,8 @@ The config file defines how the Extractor will generate the templates, the follo
     "destinationApimName": "apim-contoso",
     "resourceGroup": "Prod-Serverless-App1",
     "fileFolder": "./contoso",
-    "linkedTemplatesBaseUrl": "https://raw.githubusercontent.com/romerve/RvLabs/master/servless-devops/apim/contoso",
-    "policyXMLBaseUrl": "https://raw.githubusercontent.com/romerve/RvLabs/master/servless-devops/apim/contoso/policies",
+    "linkedTemplatesBaseUrl": "https://raw.githubusercontent.com/toddwhitehead/RvLabs/main/servless-devops/apim/contoso",
+    "policyXMLBaseUrl": "https://raw.githubusercontent.com/toddwhitehead/RvLabs/main/servless-devops/apim/contoso/policies",
     "splitAPIs": "true",
     "paramServiceUrl": "true",
     "paramNamedValue": "true",
@@ -59,7 +59,7 @@ apimtemplate extract --extractorConfig apimExtract.json
 
 The initial extraction saves the ARM templates to **contoso** folder. This folder will only store files that have extracted and that are considered service level. 
 
-Once the *extractor* finishes generating the ARM templates, they need to be added to a repository. This will give us a master branch with production ready templates, which will later be automatically deployed via Pull Request ( PR ). 
+Once the *extractor* finishes generating the ARM templates, they need to be added to a repository. This will give us a main branch with production ready templates, which will later be automatically deployed via Pull Request ( PR ). 
 
 ### Checking ARM templates into the repository
 
@@ -73,7 +73,7 @@ With the initial commit done, we are ready to create a the dev branch:
 
 Checkpoint: by now you should have:
 - ARM templates of Prod APIM instance
-- A repository with Prod templates checked into master
+- A repository with Prod templates checked into main
 - A new dev branch
 
 ### Deploy dev branch to Dev APIM 
@@ -116,7 +116,7 @@ API publishers would:
 4. Add, and commit the new or updated templates into the locally cloned repo (`git commit -a`)
 5. Push the updated templates to automatically re-deploy the changes to Dev APIM (`git push`)
 
-The reason the changes done via the portal are then re-applied to Dev APIM via *Github Actions* it's validate that templated can be successfully deployed via code, and it allows for dev branch to be merged into master via PR.
+The reason the changes done via the portal are then re-applied to Dev APIM via *Github Actions* it's validate that templated can be successfully deployed via code, and it allows for dev branch to be merged into main via PR.
 
 Dev branch deployments is triggered by [**Dev-Apim-Service.yaml**](../.github/workflows/Dev-Apim-Service.yml), which filters branch level events to only include changes done to **contoso** and overrides parameters to target Dev APIM.
 
@@ -138,7 +138,7 @@ The reason the APIs are saved to **apis** instead of somewhere inside **contoso*
 
 ## Going prod with DevOps
 
-Once Dev APIM is validated and publishers and developers have incorporated the changes in their process, it is time to promote Dev to Prod. The promotion it's done by creating a pull request from dev to master as illustrated below.
+Once Dev APIM is validated and publishers and developers have incorporated the changes in their process, it is time to promote Dev to Prod. The promotion it's done by creating a pull request from dev to main as illustrated below.
 
 ![alt](./assets/devops-apim-4.png)
 
@@ -146,8 +146,8 @@ Let's review how this works:
 1. API developer push changes to repo's dev branch
 2. The push triggers the workflow to automatically deploy Dev APIM
 3. API developer creates a pull request
-4. The team reviews the PR and approves the PR to merge dev changes into master
-5. Merging into master triggers *Github Actions* to deploy to prod
+4. The team reviews the PR and approves the PR to merge dev changes into main
+5. Merging into main triggers *Github Actions* to deploy to prod
 
 Because the templates' parameters files already target prod there is no need to override anything, therefore, the CD workflow simply deploys any templates it finds in *contoso* and *apis*.
 
