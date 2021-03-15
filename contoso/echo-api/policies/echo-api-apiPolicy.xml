@@ -13,7 +13,7 @@
 <policies>
 	<inbound>
 		<base />
-		<find-and-replace from="hoopy" to="frood" />
+		<find-and-replace from="hoopy" to="frood!" />
 	</inbound>
 	<backend>
 		<base />
