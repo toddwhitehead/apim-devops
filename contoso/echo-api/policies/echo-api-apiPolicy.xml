@@ -19,7 +19,10 @@
 		<base />
 	</backend>
 	<outbound>
-		<base />
+		<base />	
+		<set-header name="X-Powered-By" exists-action="delete" />
+		<set-header name="X-AspNetMvc-Version" exists-action="delete" />
+		<set-header name="X-AspNet-Version" exists-action="delete" />
 	</outbound>
 	<on-error>
 		<base />
