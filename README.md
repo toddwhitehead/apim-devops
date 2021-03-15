@@ -1,8 +1,8 @@
-![DEV APIM Service](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Dev%20Contoso%20Service/badge.svg?branch=dev)
-![DEV APIM APIs](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Dev%20Contoso%20APIs/badge.svg?branch=dev)
+![DEV APIM Service](https://github.com/toddwhitehead/apim-devops/workflows/APIM%20Dev%20Contoso%20Service/badge.svg?branch=dev)
+![DEV APIM APIs](https://github.com/toddwhitehead/apim-devops/workflows/APIM%20Dev%20Contoso%20APIs/badge.svg?branch=dev)
 
-![PROD APIM Service](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Prod%20Contoso%20Service/badge.svg?branch=main)
-![PROD APIM APIs](https://github.com/toddwhitehead/rvlabs-apim-devops/workflows/APIM%20Prod%20Contoso%20APIs/badge.svg?branch=main)
+![PROD APIM Service](https://github.com/toddwhitehead/apim-devops/workflows/APIM%20Prod%20Contoso%20Service/badge.svg?branch=main)
+![PROD APIM APIs](https://github.com/toddwhitehead/apim-devops/workflows/APIM%20Prod%20Contoso%20APIs/badge.svg?branch=main)
 
 # Adopting a DevOps process in Azure API Management using Azure APIM DevOps Resource Kit
 
