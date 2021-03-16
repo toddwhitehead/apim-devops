@@ -13,7 +13,7 @@
     },
     "serviceUrl": {
       "value": {
-        "echoapi": "http://urasdasdasfdsdsfdsfl.com",
+        "echoapi": "http://echoapi.cloudapp.net/api",
         "swaggerpetstoreyaml": null
       }
     },
