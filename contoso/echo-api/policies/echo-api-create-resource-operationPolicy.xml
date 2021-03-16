@@ -8,5 +8,9 @@
 	</backend>
 	<outbound>
 		<base />
+		<set-header name="x-aspnet-version" exists-action="delete" />
 	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>

@@ -21,4 +21,4 @@ apis:
     products: starter    # Optional, adds api to the specified products
 outputLocation: ./apis/petstore/arm   # Required, folder the creator will write the templates to
 linked: true   # Optional
-linkedTemplatesBaseUrl : https://raw.githubusercontent.com/romerve/rvlabs-apim-devops/master/apis
+linkedTemplatesBaseUrl : https://raw.githubusercontent.com/toddwhitehead/apim-devops/main/apis

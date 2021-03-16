@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "towhit-api-demo",
+        "resourceId": "https://management.azure.com/subscriptions/e3287f13-75f9-41e4-b32f-3c68f0e8d823/resourceGroups/towhit-apim-demo-dev/providers/Microsoft.Web/sites/towhit-api-demo",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{towhit-api-demo-key}}"
+            ]
+          }
+        },
+        "url": "https://towhit-api-demo.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/towhit-api-demo')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    }
+  ]
+}

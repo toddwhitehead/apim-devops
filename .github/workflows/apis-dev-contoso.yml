@@ -32,11 +32,12 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
         
+  
     # Azure login
     - name: Azure Login
-      uses: Azure/login@v1
+      uses: azure/login@v1
       with:
-        creds: ${{ secrets.RVLABS_APIMS_CONTOSO }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     # ARM deployment tasks  
     - name: Deploy APIs

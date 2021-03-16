@@ -6,7 +6,7 @@
       "value": "apim-contoso"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/romerve/rvlabs-apim-devops/master/apis"
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/main/apis"
     }
   },
   "resources": []

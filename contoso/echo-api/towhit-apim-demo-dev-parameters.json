@@ -3,22 +3,23 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "ApimServiceName": {
-      "value": "apims-prod-contoso"
+      "value": "towhit-apim-demo-dev"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/main/contoso"
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/dev/contoso"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/main/contoso/policies"
+      "value": "https://raw.githubusercontent.com/toddwhitehead/apim-devops/dev/contoso/policies"
     },
     "serviceUrl": {
       "value": {
-        "echoapi": "http://echoapi.cloudapp.net/api",
-        "swaggerpetstoreyaml": null
+        "echoapi": "http://echoapi.cloudapp.net/api"
       }
     },
     "NamedValues": {
       "value": {
+        "Property604f1842b183e011f424e727": "d345824a-5346-4a9b-b9c7-6b3f7388c89e",
+        "towhitapidemokey": "75HZkGGiKxz2IXVpjRbD7Hm7QaKKreUeYarHzgAdPk5dhKUmfY4XGA==",
         "xma": "-Test,JSON-t1"
       }
     },
@@ -30,4 +31,4 @@
     }
   },
   "resources": []
-}  
+}
